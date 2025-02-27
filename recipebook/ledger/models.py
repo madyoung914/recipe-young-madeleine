@@ -23,13 +23,9 @@ class Recipe(models.Model):
     #idk ab this should always link to recipes/list????
     
 class RecipeIngredient(models.Model):
-    name = models.CharField(max_length=50, null=True)
     quantity = models.IntegerField(null=True)
-    ingredients = models.ForeignKey(Ingredient, on_delete=models.SET_NULL, null=True, related_name = 'recipe')
-    recipes = models.ForeignKey(Recipe, on_delete=models.SET_NULL, null=True, related_name='ingredients')
-
-    def __str__(self):
-        return self.name
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.SET_NULL, null=True, related_name = 'recipe')
+    recipe = models.ForeignKey(Recipe, on_delete=models.SET_NULL, null=True, related_name='ingredients')
     
     @property
     def get_quantity(self):
