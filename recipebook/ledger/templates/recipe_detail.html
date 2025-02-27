@@ -5,7 +5,7 @@
 
 <h3>{{ object.name }}</h3>
 <ul>
-    {% for each_ingredient in object.ingredients.all  %}
+    {% for ingredient in object.ingredients.all  %}
         <li>{{ ingredient.ingredient.name }}: {{ ingredient.get_quantity }}</li>
     {% endfor %}
 </ul>
