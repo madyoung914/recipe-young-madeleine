@@ -21,8 +21,14 @@ class Recipe(models.Model):
     
 class RecipeIngredient(models.Model):
     quantity = models.IntegerField(null=True)
-    ingredient = models.ForeignKey(Ingredient, on_delete=models.SET_NULL, null=True, related_name = 'recipe')
-    recipe = models.ForeignKey(Recipe, on_delete=models.SET_NULL, null=True, related_name='ingredients')
+    ingredient = models.ForeignKey(Ingredient, 
+                                   on_delete=models.SET_NULL, 
+                                   null=True, 
+                                   related_name = 'recipe')
+    recipe = models.ForeignKey(Recipe, 
+                               on_delete=models.SET_NULL, 
+                               null=True, 
+                               related_name='ingredients')
     
     @property
     def get_quantity(self):
