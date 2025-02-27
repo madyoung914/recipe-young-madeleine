@@ -19,10 +19,18 @@ class Recipe(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('ledger:recipes/list', '') 
+        return reverse('ledger:recipe-detail', args=[self.pk]) 
     #idk ab this should always link to recipes/list????
     
 class RecipeIngredient(models.Model):
-    quantity = models.IntegerField()
-    ingredients = models.ForeignKey(Ingredient, on_delete=models.SET_NULL, null=True, related_name = 'ingredients')
-    recipes = models.ForeignKey(Recipe, on_delete=models.SET_NULL, null=True, related_name='recipes')
+    name = models.CharField(max_length=50, null=True)
+    quantity = models.IntegerField(null=True)
+    ingredients = models.ForeignKey(Ingredient, on_delete=models.SET_NULL, null=True, related_name = 'recipe')
+    recipes = models.ForeignKey(Recipe, on_delete=models.SET_NULL, null=True, related_name='ingredients')
+
+    def __str__(self):
+        return self.name
+    
+    @property
+    def get_quantity(self):
+        return self.quantity

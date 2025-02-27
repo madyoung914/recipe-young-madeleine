@@ -1,10 +1,17 @@
 from django.shortcuts import render 
 from django.http import HttpResponse 
+from .models import Recipe
+from django.views.generic.list import ListView
+
+class RecipeListView(ListView):
+    model = Recipe
+    template_name = 'recipe_list.html'
 
 def index(request):
     return HttpResponse(' ')
 
 def recipe_list(request):
+    '''
     ctx = {
         "recipes": [
             {
@@ -70,6 +77,10 @@ def recipe_list(request):
             }
         ]
     }
+    '''
+    recipes = Recipe.objects.all()
+    ctx = { "recipes": recipes }
+
     return render(request, "recipe_list.html", ctx)
 
 def recipe_1(request):
