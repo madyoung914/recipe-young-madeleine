@@ -2,4 +2,4 @@
 csci40env/
 **/*.pyc
 **/__pycache__
-dp.sqlite3
+db.sqlite3
