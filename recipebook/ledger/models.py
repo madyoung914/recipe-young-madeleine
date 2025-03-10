@@ -1,5 +1,5 @@
 from django.db import models
-from django.urls import reverse 
+from django.urls import reverse
 from django.contrib.auth.models import User
 
 
@@ -10,7 +10,7 @@ class Ingredient(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('ledger:recipe-detail', args=[self.pk]) 
+        return reverse('ledger:recipe-detail', args=[self.pk])
 
 
 class Recipe(models.Model):
@@ -23,20 +23,16 @@ class Recipe(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('ledger:recipe-detail', args=[self.pk]) 
-    
+        return reverse('ledger:recipe-detail', args=[self.pk])
+
 
 class RecipeIngredient(models.Model):
     quantity = models.IntegerField(null=True)
-    ingredient = models.ForeignKey(Ingredient, 
-                                   on_delete=models.SET_NULL, 
-                                   null=True, 
-                                   related_name = 'recipe')
-    recipe = models.ForeignKey(Recipe, 
-                               on_delete=models.SET_NULL, 
-                               null=True, 
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.SET_NULL,
+                                   null=True, related_name='recipe')
+    recipe = models.ForeignKey(Recipe, on_delete=models.SET_NULL, null=True,
                                related_name='ingredients')
-    
+
     @property
     def get_quantity(self):
         return self.quantity
