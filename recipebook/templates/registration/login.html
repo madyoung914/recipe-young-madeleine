@@ -1,12 +1,17 @@
-{% extends 'base.html' %}
+{% extends 'regbase.html' %}
 
-{% block content %}
+ {% block content %}
     {% if form.errors %}
-        <p>{{ form.errors }}</p>
+        {% for field in form %}
+            {% for error in field.errors %}
+                {{ error }}    
+            {% endfor %}
+        {% endfor %}
     {% endif %}
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Login</button>
     </form>
-{% endblock %}
+    <a href="{% url 'password_reset' %}">Forgot Password?</a>
+ {% endblock %}
