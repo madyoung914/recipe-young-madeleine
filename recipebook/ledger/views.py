@@ -3,7 +3,8 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-class RecipeListView(LoginRequiredMixin,ListView):
+
+class RecipeListView(ListView):
     model = Recipe
     template_name = 'recipe_list.html'
 

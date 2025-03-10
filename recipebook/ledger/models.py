@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse 
 
+
 class Ingredient(models.Model):
     name = models.CharField(max_length=50)
 
@@ -9,6 +10,7 @@ class Ingredient(models.Model):
 
     def get_absolute_url(self):
         return reverse('ledger:recipe-detail', args=[self.pk]) 
+
 
 class Recipe(models.Model):
     name = models.CharField(max_length=50)
@@ -22,6 +24,7 @@ class Recipe(models.Model):
     def get_absolute_url(self):
         return reverse('ledger:recipe-detail', args=[self.pk]) 
     
+
 class RecipeIngredient(models.Model):
     quantity = models.IntegerField(null=True)
     ingredient = models.ForeignKey(Ingredient, 
