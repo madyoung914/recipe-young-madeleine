@@ -36,3 +36,10 @@ class RecipeIngredient(models.Model):
     @property
     def get_quantity(self):
         return self.quantity
+
+
+class RecipeImage(models.Model):
+    image = models.ImageField(upload_to='images/', null=False)
+    description = models.TextField(max_length=255)
+    recipe = models.ForeignKey(Recipe, on_delete=models.SET_NULL, null=True,
+                               related_name='images')
