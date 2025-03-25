@@ -3,6 +3,8 @@
 
 {% block content %}
 
+<h2>Want to create new Recipes?</h2>
+<h4>Click the link to create: <a href="{% url 'ledger:recipe-create' %}">Here</a></h4>
     {% for recipe in object_list %}
         <li>
             {{ recipe }}: <a href="{{ recipe.get_absolute_url }}">View Recipe Ingredients Here</a>

@@ -5,10 +5,10 @@
 
 <h3>{{ object.name }}</h3>
 
+<h4>Click the link to add more images: <a href="{% url 'ledger:recipe-image-create' pk=recipe.pk %}">Here</a></h4>
     {% for image in object.images.all %}
-    <h3>{{ image.image.url }}</h3>
         {% if image %}
-            <img src="{{ image.image.url }}" alt="this is alt image">
+            <img src="{{ image.image.url }}" alt="{{ image.description }}">
         {% endif %}
     {% endfor %}
 
@@ -19,4 +19,5 @@
     {% endfor %}
 </ul>
 
+<h4><a href="{% url 'ledger:recipe-list' %}">Return back to recipes</a></h4>
 {% endblock %}

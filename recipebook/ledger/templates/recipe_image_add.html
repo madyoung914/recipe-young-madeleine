@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+        <form method = "POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }} 
+                <button type="submit">Submit</button>
+        </form>
+
+        <h4>{{ get_success_url }}</h4>
+        <h4><a href="{{ get_success_url }}">Return back to the recipe</a></h4>
+{% endblock %}
