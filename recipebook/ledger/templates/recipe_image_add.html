@@ -8,6 +8,5 @@
                 <button type="submit">Submit</button>
         </form>
 
-        <h4>{{ get_success_url }}</h4>
-        <h4><a href="{{ get_success_url }}">Return back to the recipe</a></h4>
+        <h4><a href="{% url 'ledger:recipe-detail' pk=pk %}">Return back to the recipe</a></h4>
 {% endblock %}
